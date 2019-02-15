@@ -1,3 +1,6 @@
+mod cpu;
+
 fn main() {
-    println!("Hello, world!");
+    
+    println!("Hello, world: {}", cpu::fetch(42));
 }

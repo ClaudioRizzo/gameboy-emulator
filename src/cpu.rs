@@ -1,24 +1,44 @@
+use std::collections::HashMap;
+
 struct Register {
-    A: i8,
-    F: i8,
-    AF: i16,
-    B: i8,
-    C: i8,
-    BC: i16,
-    D: i8,
-    E: i8,
-    DE: i16,
-    H: i8,
-    L: i8,
-    HL: i16,
-    SP: i16,
-    PC: i16,    
+    a: i8,
+    f: i8,
+    b: i8,
+    c: i8,
+    d: i8,
+    e: i8,
+    h: i8,
+    l: i8,
+    sp: i16,
+    pc: i16,    
 }
+
+struct Opcodes {
+    ldrr_bb: fn(i16)->(i8),
+}
+
+struct Clock {
+    machine_cycle: i8,
+    time_cycle: i8,
+}
+
+
+
 
 // Let's read 8bit opcodes, if we find a CB, then
 // fetch should be caled twice
-fn fetch(address: i16) -> i8 {
-    0
+pub fn fetch(address: i16) -> i8 {
+    let opcs = Opcodes {
+        ldrr_bb: |address| address as i8, 
+    };
+    
+    (opcs.ldrr_bb)(address)
 }
+
+
+
+
+
+
 
 
